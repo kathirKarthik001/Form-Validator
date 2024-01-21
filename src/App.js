@@ -1,25 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
+import React ,{useState} from 'react';
+
+import Basic from './Basic form';
+import Advanced from './Advanced form';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const [view , setView] = useState('basic')
+
+return (
+<div className="container">
+  <div className="login">
+        <nav>
+          <h1
+          onClick={()=>{setView('basic')}}
+          style={{color:view === 'basic'?'red':''}}
+          >
+            Basic
+          </h1>
+          <h1
+          onClick={()=>{setView('advanced')}}
+          style={{color:view === 'advanced'?'red':''}}
+          >
+            Advanced
+          </h1>
+        </nav>
+        <div>
+          {view === 'basic'?<Basic/> :<Advanced/>}
+        </div>
+  </div>
+  </div>
+
+
+
+
+)
+
+
 }
 
 export default App;
+
